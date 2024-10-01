@@ -1,4 +1,4 @@
-Documentation sur l'installation et la configuration de Fedora 40 avec un environement de bureau Gnome
+Documentation sur l'installation et la configuration de Fedora 40 avec un environement de bureau Gnome à partir d'une installation de [**Fedora Server 40**](https://fedoraproject.org/fr/server/download) : [Fedora-Server-dvd-x86_64-40-1.14.iso](https://download.fedoraproject.org/pub/fedora/linux/releases/40/Server/x86_64/iso/Fedora-Server-dvd-x86_64-40-1.14.iso)
 
 # INSTALLATION DE FEDORA
 
