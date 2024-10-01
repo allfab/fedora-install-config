@@ -38,11 +38,9 @@ dnf install -y \
     gnome-bluetooth \
     gnome-browser-connector \
     gnome-calculator \
-    gnome-calendar \
     gnome-characters \
     gnome-classic-session \
     gnome-classic-session-xsession \
-    gnome-clocks \
     gnome-color-manager \
     gnome-connections \
     gnome-control-center \
