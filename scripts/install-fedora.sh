@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 green=$'\e[0;32m'
 red=$'\e[0;31m'
 reset=$'\e[0m'
@@ -7,12 +9,14 @@ reset=$'\e[0m'
 # ON TESTE SI ON EST ROOT
 if [[ $(id -u) -ne "0" ]]
 then
-	echo -e "${red}Lancer le script avec les droits root (su - root ou sudo)${reset}"
+	echo -e "${red}LANCER LE SCRIPT D'INSTALLATION AVEC LES DROITS root (su - root ou sudo)${reset}"
 	exit 1;
 fi
 
+echo "${green}MISE À JOUR SYSTÈME${reset}"
+
 echo "${green}INSTALLATION DE L'ENVIRONNEMENT DE BUREAU gnome${reset}"
-dnf install \
+dnf install -y \
     @base-x \
     @core \
     @guest-desktop-agents \
@@ -26,6 +30,7 @@ dnf install \
     dconf \
     evince \
     evince-djvu \
+    firefox \
     fprintd-pam \
     gdm \
     glib-networking \
@@ -99,7 +104,10 @@ dnf install \
     xdg-desktop-portal-gtk \
     xdg-user-dirs-gtk
 
-echo "${green}INSTALLATION DE L'ENVIRONNEMENT DE BUREAU gnome${reset}"
+echo "${green}SUPPRESSION DES PAQUETS NON NÉCESSAIRES${reset}"
+dnf remove -y gnome-tour
+
+echo "${green}DÉFINITION DE LA CIBLE PAR DÉFAUT SUR graphical.target (shell graphique)${reset}"
 systemctl set-default graphical.target
 
 echo "${green}REDÉMARRAGE DE LA MACHINE${reset}"
