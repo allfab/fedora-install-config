@@ -579,6 +579,16 @@ sudo mkdir -p /root/.local/share/fonts
 sudo cp -f FiraMonoNerdFont-Regular.otf /root/.local/share/fonts
 ```
 
+#### Nerd-Fonts
+Sur Fedora :
+```bash
+git clone --depth=1 https://github.com/ryanoasis/nerd-fonts ~/.nerd-fonts
+cd .nerd-fonts 
+./install.sh
+
+sudo dnf install fontawesome-fonts
+```
+
 ```bash
 sudo dnf install -t fontawesome-fonts-all
 git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
