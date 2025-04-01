@@ -1,599 +1,477 @@
-Documentation sur l'installation et la configuration de Fedora 40 avec un environement de bureau Gnome à partir d'une installation de [**Fedora Server 40**](https://fedoraproject.org/fr/server/download) : [Fedora-Server-dvd-x86_64-40-1.14.iso](https://download.fedoraproject.org/pub/fedora/linux/releases/40/Server/x86_64/iso/Fedora-Server-dvd-x86_64-40-1.14.iso)
+# INSTALLATION DE FEDORA 42
 
-# INSTALLATION DE FEDORA
+Documentation sur l'installation et la configuration de Fedora 42 avec un environement de bureau Gnome à partir d'une installation de [**Fedora Server 42**](https://fedoraproject.org/fr/server/download) : [Fedora-Server-netinst-x86_64-42_Beta-1.4.iso](https://download.fedoraproject.org/pub/fedora/linux/releases/test/42_Beta/Server/x86_64/iso/Fedora-Server-netinst-x86_64-42_Beta-1.4.iso)
 
-[https://www.reddit.com/r/Fedora/comments/lobnfm/guide_fedora_gnome_minimal_install/](https://www.reddit.com/r/Fedora/comments/lobnfm/guide_fedora_gnome_minimal_install/)
+## Téléchargement
 
-# PARTIONNEMENT 
+Télécharger l'ISO Minimal sur [le site de Fedora](https://fedoraproject.org/fr/server/download) :
 
-`Btrfs` est le système de fichiers par défaut utilisé par Fedora Workstation. `Btrfs` présente deux avantages clés pour les utilisateurs utilisant la configuration du système de fichiers par défaut :
-- La compression transparente signifie que les données stockées sur le disque utilisent moins d'espace
-- La réinstallation du système tout en préservant les données des utilisateurs peut être prise en charge, tout en évitant la question des volumes à court d'espace. Ceci est dû au fait que les sous-volumes de `Btrfs` ne se limitent pas à une taille prédéfinie statique.
+- [`Fedora-Server-netinst-x86_64-42_Beta-1.4.iso`](https://download.fedoraproject.org/pub/fedora/linux/releases/test/42_Beta/Server/x86_64/iso/Fedora-Server-netinst-x86_64-42_Beta-1.4.iso)
 
-`Btrfs` fournit également une gamme d'autres fonctionnalités, telles que snapshotting et rétrécissement en ligne, qui peuvent être utiles pour ceux qui veulent les utiliser, et peuvent potentiellement être la base des futures fonctionnalités orientées vers l'utilisateur.
+Pour confectionner le support d'installation, on utilisera un système Linux
+existant. 
 
-Par défaut, une installation Fedora Workstation présente la disposition de disque suivante :
+Insérer et identifier la clé USB :
 
-| Rôle                 | Système de fichier | Point de montage | Taille | Nom   |
-|----------------------|--------------------|------------------|--------|-------|
-| EFI System Partition | EFI                | /boot/efi        | 1GB    | efi   |
-| Boot partition       | Bios Boot          | /boot            | 512MB  | boot  |
-| Root Subvolume       | BTRFS              | /                | All    | @     |
-| Home Subvolume       | BTRFS              | /home            | 100GB  | @home |
-
-Les deux premières partitions sont communes à toutes les installations de Fedora et sont nécessaires au démarrage du système. Le sous-volume racine (/) contient l'installation du système et le sous-volume /home contient les données et paramètres utilisateur.
-
-Docs :
-- [Fedora Workstation Documentation : Configuration du disque](https://docs.fedoraproject.org/fr/workstation-docs/disk-config/#_btrfs)
-- [Guide de l'administrateur système Btrfs : dispositions des sous-volumes](https://archive.kernel.org/oldwiki/btrfs.wiki.kernel.org/index.php/SysadminGuide.html#Layout)
-
-
-# Swap sur ZRAM
-
-Fedora Workstation n'utilise pas de partition d'échange dédiée. Au lieu de cela, il utilise zram : un lecteur émulé qui utilise la RAM pour son stockage. L'échange basé sur la RAM est plus rapide que l'échange basé sur le disque, ce qui évite le ralentissement extrême du système et les perturbations qui peuvent survenir avec une partition d'échange traditionnelle.
-
-Le lecteur zram est compressé pour utiliser efficacement la mémoire disponible et se voit attribuer de la mémoire de manière dynamique, ce qui signifie qu'il n'utilise la RAM système que lorsqu'un échange est nécessaire.
-
-# INSTALLATION DE L'ENVIRONNEMENT GRAPHIQUE
-
-## Découverte des différents environnements de bureau disponible
-```bash
-sudo  dnf group list --ids | grep desktop
-   KDE Plasma Workspaces (kde-desktop-environment)
-   Bureau Xfce (xfce-desktop-environment)
-   Phosh Desktop (phosh-desktop-environment)
-   Bureau LXDE (lxde-desktop-environment)
-   Bureau LXQt (lxqt-desktop-environment)
-   Bureau Cinnamon (cinnamon-desktop-environment)
-   Bureau MATE (mate-desktop-environment)
-   Environnement de bureau Sugar (sugar-desktop-environment)
-   Bureau Deepin (deepin-desktop-environment)
-   Budgie Desktop (budgie-desktop-environment)
-   Bureau basique (basic-desktop-environment)
-   i3 desktop (i3-desktop-environment)
-   Sway Desktop (sway-desktop-environment)
-   Budgie (budgie-desktop)
-   Budgie Desktop Applications (budgie-desktop-apps)
-   Desktop accessibility (desktop-accessibility)
+```
+# lsblk
 ```
 
-## Information sur le groupe de packages :
-```bash
-sudo dnf group info basic-desktop-environment
+Écrire le fichier ISO sur la clé USB :
+
 ```
-ou
-```bash
-sudo dnf group info "Bureau basique"
+# dd status=progress if=Fedora-Server-netinst-x86_64-42_Beta-1.4.iso of=/dev/sdX
 ```
 
-```bash
-Dernière vérification de l’expiration des métadonnées effectuée il y a 0:20:08 le mar. 01 oct. 2024 13:24:36.
-Groupe d’environnement : Bureau basique
- Description : Système de fenêtrage X avec une sélection de gestionnaires de fenêtres.
- Groupes obligatoires :
-   Basic Desktop
-   Common NetworkManager Submodules
-   Core
-   Dial-up Networking Support
-   Fonts
-   Guest Desktop Agents
-   Hardware Support
-   Multimedia
-   Standard
-   base-x
- Groupes optionnels :
-   Cinnamon
-   Firefox Web Browser
-   GNOME
-   Input Methods
-   KDE
-   LXDE
-   LXQt
-   Legacy Fonts
-   LibreOffice
-   MATE
-   Sugar Desktop Environment
-   XMonad
-   XMonad for MATE
-   Xfce
+> Attention à ne pas vous tromper de fichier de périphérique `/dev/sdX`!
+
+
+## Réinitialiser le disque
+
+Démarrer sur la clé en choisissant l'option `Rescue a Fedora System` via `Troubleshooting` :
+
+![Troubleshooting](./assets/images/boot-01.png)
+![Rescue a Fedora System](./assets/images/boot-02.png)
+
+Opter pour l'option `3) Skip to shell` et confirmer.
+![3) Skip to shell](./assets/images/boot-03.png)
+
+Passer du clavier QWERTY à un clavier AZERTY :
+```
+# loadkeys fr-latin1
 ```
 
-## Installation du groupe de packages
-```bash
-sudo dnf install @basic-desktop-environment
-```
-ou
-```bash
-sudo dnf group install basic-desktop-environment
-```
-ou
-```bash
-sudo dnf group install "Bureau basique"
-```
+Pour réinitialiser le disque, lancez `gdisk` et utilisez successivement les
+options `x` et `z`.
 
-Comprend les groupes de packages suivants :
-```bash
-Installation des groupes d’environnement:
- Basic Desktop
-Installation des groupes:
- base-x
- Basic Desktop
- Core
- Dial-up Networking Support
- Fonts
- Guest Desktop Agents
- Hardware Support
- Multimedia
- Common NetworkManager Submodules
- Standard
+
+## Partitionnement
+
+Identifiez le disque à partitionner :
+
+```
+# lsblk
 ```
 
-Si on veut installer un environnement de bureau Gnome un peu plus épuré :
-```bash
-sudo dnf install @base-x @gnome
+Exemple avec BIOS/MBR (`fdisk`) :
+
+```
+  Device     Boot    Start       End   Sectors  Size Id Type
+  /dev/sda1  *        2048   2099199   2097152    1G 83 Linux
+  /dev/sda2        2099200  10487807   8388608    4G 82 Linux swap
+  /dev/sda3       10487808 117231407 106743600 50.9G 83 Linux
 ```
 
-Si on veut encore aller plus loin :
-```bash
-sudo dnf group info gnome
-Dernière vérification de l’expiration des métadonnées effectuée il y a 0:04:53 le mar. 01 oct. 2024 13:31:43.
-Groupe : GNOME
- Description : GNOME est un environnement de bureau très intuitif et facile à prendre en main.
- Paquets obligatoires :
-   dconf
-   gdm
-   gnome-boxes
-   gnome-connections
-   gnome-control-center
-   gnome-initial-setup
-   gnome-session-wayland-session
-   gnome-settings-daemon
-   gnome-shell
-   gnome-software
-   gnome-terminal
-   gnome-text-editor
-   nautilus
-   polkit
-   yelp
- Paquets par défaut :
-   ModemManager
-   NetworkManager-adsl
-   NetworkManager-openconnect-gnome
-   NetworkManager-openvpn-gnome
-   NetworkManager-ppp
-   NetworkManager-pptp-gnome
-   NetworkManager-ssh-gnome
-   NetworkManager-vpnc-gnome
-   NetworkManager-wwan
-   PackageKit-command-not-found
-   PackageKit-gtk3-module
-   adobe-source-code-pro-fonts
-   avahi
-   baobab
-   evince
-   evince-djvu
-   fprintd-pam
-   glib-networking
-   gnome-backgrounds
-   gnome-bluetooth
-   gnome-browser-connector
-   gnome-calculator
-   gnome-calendar
-   gnome-characters
-   gnome-classic-session
-   gnome-classic-session-xsession
-   gnome-clocks
-   gnome-color-manager
-   gnome-contacts
-   gnome-disk-utility
-   gnome-font-viewer
-   gnome-logs
-   gnome-maps
-   gnome-remote-desktop
-   gnome-session-xsession
-   gnome-system-monitor
-   gnome-terminal-nautilus
-   gnome-user-docs
-   gnome-user-share
-   gnome-weather
-   gvfs-afc
-   gvfs-afp
-   gvfs-archive
-   gvfs-fuse
-   gvfs-goa
-   gvfs-gphoto2
-   gvfs-mtp
-   gvfs-smb
-   librsvg2
-   libsane-hpaio
-   loupe
-   mesa-dri-drivers
-   mesa-libEGL
-   rygel
-   sane-backends-drivers-scanners
-   simple-scan
-   snapshot
-   sushi
-   systemd-oomd-defaults
-   totem
-   tracker
-   tracker-miners
-   xdg-desktop-portal
-   xdg-desktop-portal-gnome
-   xdg-desktop-portal-gtk
-   xdg-user-dirs-gtk
+Exemple avec BIOS/GPT (`gdisk`) :
+
+```
+  Device        Start       End   Sectors  Size Type
+  /dev/sda1      2048      4095      2048    1M BIOS boot
+  /dev/sda2      4096   2101247   2097152    1G Linux filesystem
+  /dev/sda3   2101248  10489855   8388608    4G Linux swap
+  /dev/sda4  10489856 117229567 106739712 50.9G Linux filesystem
 ```
 
-```bash
-sudo dnf install \
-   @base-x \
-   @core \
-   @guest-desktop-agents \
-   @hardware-support \
-   @multimedia \
-   @networkmanager-submodules \
-   @standard \
-   adobe-source-code-pro-fonts \
-   avahi \
-   baobab \
-   dconf \
-   evince \
-   evince-djvu \
-   fprintd-pam \
-   gdm \
-   glib-networking \
-   gnome-backgrounds \
-   gnome-bluetooth \
-   gnome-browser-connector \
-   gnome-calculator \
-   gnome-calendar \
-   gnome-characters \
-   gnome-classic-session \
-   gnome-classic-session-xsession \
-   gnome-clocks \
-   gnome-color-manager \
-   gnome-connections \
-   gnome-control-center \
-   gnome-disk-utility \
-   gnome-font-viewer \
-   gnome-initial-setup \
-   gnome-logs \
-   gnome-maps \
-   gnome-remote-desktop \
-   gnome-session-wayland-session \
-   gnome-session-xsession \
-   gnome-settings-daemon \
-   gnome-shell \
-   gnome-software \
-   gnome-system-monitor \
-   gnome-terminal \
-   gnome-terminal-nautilus \
-   gnome-text-editor \
-   gnome-user-docs \
-   gnome-user-share \
-   gnome-weather \
-   gvfs-afc \
-   gvfs-afp \
-   gvfs-archive \
-   gvfs-fuse \
-   gvfs-goa \
-   gvfs-gphoto2 \
-   gvfs-mtp \
-   gvfs-smb \
-   librsvg2 \
-   libsane-hpaio \
-   loupe \
-   mesa-dri-drivers \
-   mesa-libEGL \
-   ModemManager \
-   nautilus \
-   NetworkManager-adsl \
-   NetworkManager-openconnect-gnome \
-   NetworkManager-openvpn-gnome \
-   NetworkManager-ppp \
-   NetworkManager-pptp-gnome \
-   NetworkManager-ssh-gnome \
-   NetworkManager-vpnc-gnome \
-   NetworkManager-wwan \
-   PackageKit-command-not-found \
-   PackageKit-gtk3-module \
-   polkit \
-   rygel \
-   sane-backends-drivers-scanners \
-   simple-scan \
-   snapshot \
-   sushi \
-   systemd-oomd-defaults \
-   tracker \
-   tracker-miners \
-   vlc \
-   xdg-desktop-portal \
-   xdg-desktop-portal-gnome \
-   xdg-desktop-portal-gtk \
-   xdg-user-dirs-gtk
+Exemple avec UEFI/GPT (`gdisk`) :
+
+```
+  Device        Start       End   Sectors  Size Type
+  /dev/sda1      2048    206847    204800  100M EFI System
+  /dev/sda2    206848   2303999   2097152    1G Linux filesystem
+  /dev/sda3   2304000  10692607   8388608    4G Linux swap
+  /dev/sda4  10692608 117229567 106536960 50.8G Linux filesystem
 ```
 
-Désinstallation des applications non souhaitées
-```bash
-sudo dnf remove gnome-boxes gnome-tour yelp
+- ef00 EFI System partition
+- ef02 BIOS boot partition
+- 8300 Linux filesystem
+- 8200 Linux Swap
+- 8e00 Linux LVM
+
+> Idéalement, créez une partition `swap` égale à la quantité de RAM disponible
+> sur votre machine. Utilisez la commande `free -m` pour en savoir plus.
+
+> **Swap sur ZRAM** :
+> Fedora n'utilise pas de partition d'échange dédiée. Au lieu de cela, il utilise zram : un lecteur émulé qui utilise la RAM pour son stockage. L'échange basé sur la RAM est plus rapide que l'échange basé sur le disque, ce qui évite le ralentissement extrême du système et les perturbations qui peuvent survenir avec une partition d'échange traditionnelle.
+> 
+> Le lecteur zram est compressé pour utiliser efficacement la mémoire disponible et se voit attribuer de la mémoire de manière dynamique, ce qui signifie qu'il n'utilise la RAM système que lorsqu'un échange est nécessaire.
+
+## Installation
+
+- Démarrez sur le support d'installation.
+
+- Sélectionnez la langue et le clavier.
+
+- Optez pour le partitionnement manuel et formatez les partitions que vous
+  venez de faire. Pour les étiquettes (*labels*) vous pouvez choisir `EFI`,
+  `boot`, `swap` et `root`.
+
+- Activez le réseau et vérifiez si vous obtenez bien une adresse IP. 
+
+- Choisissez un nom d'hôte en remplacement de `localhost.localdomain`.
+
+- Configurez le fuseau horaire.
+
+- Désactivez Kdump (mécanisme de capture de plantage du noyau).
+
+- Dans la sélection des paquets, optez pour **Installation minimale**.
+
+- Définissez le mot de passe `root`.
+
+- Créez un utilisateur normal, par exemple `microlinux`.
+
+- Cochez la case **Faire de cet utilisateur un administrateur**. L’utilisateur
+  sera ajouté au groupe `wheel` et pourra se servir de la commande `sudo`.
+
+- Lancez l'installation.
+
+
+## Mise à jour
+
+Au terme de l'installation, connectez-vous en tant que `root` et effectuez la
+mise à jour initiale :
+
+```
+# dnf update -y
 ```
 
-## INSTALLATION DU SUPPORT MATÉRIEL
-```bash
-sudo dnf group install "Hardware Support"
-```
-**Pas nécessaire puisque le groupe de packages est déjà inclu dans la groupe de packages de l'environnement de bureau basique (Gnome).**
+Redémarrez :
 
-## APPLICATIONS DE BASE gnome ET AUTRES
-```bash
-sudo dnf install \
-	desktop-backgrounds-gnome \
-	f40-backgrounds-gnome \
-	fedora-chromium-config-gnome \
-	firefox \
-	fros-gnome \
-	gdm \
-	gnome-abrt \
-	gnome-autoar \
-	gnome-backgrounds \
-	gnome-backgrounds-extras \
-	gnome-battery-bench \
-	gnome-bluetooth \
-	gnome-bluetooth-libs \
-	gnome-browser-connector \
-	gnome-calculator \
-	gnome-calendar \
-	gnome-characters \
-	gnome-classic-session \
-	gnome-classic-session-xsession \
-	gnome-clocks \
-	gnome-color-manager \
-	gnome-connections \
-	gnome-control-center \
-	gnome-desktop3 \
-	gnome-desktop4 \
-	gnome-disk-utility \
-	gnome-extensions-app \
-	gnome-firmware \
-	gnome-font-viewer \
-	gnome-icon-theme \
-	gnome-initial-setup \
-	gnome-keyring \
-	gnome-keyring-pam \
-	gnome-logs \
-	gnome-maps \
-	gnome-menus \
-	gnome-monitor-config \
-	gnome-nettool \
-	gnome-online-accounts \
-	gnome-power-manager \
-	gnome-remote-desktop \
-	gnome-screenshot \
-	gnome-session \
-	gnome-session-wayland-session \
-	gnome-session-xsession \
-	gnome-settings-daemon \
-	gnome-shell \
-	gnome-software \
-	gnome-software-fedora-langpacks \
-	gnome-system-log \
-	gnome-system-monitor \
-	gnome-terminal \
-	gnome-terminal-nautilus \
-	gnome-text-editor \
-	gnome-themes-extra \
-	gnome-tweaks \
-	gnome-usage \
-	gnome-user-docs \
-	gnome-user-share \
-	gnome-weather \
-	nautilus
+```
+# reboot
 ```
 
-## OPTIONS DES RÉPERTOIRES "utilisateur" DANS LE BARRE LATÉRALE DE NAUTILUS
-```bash
-sudo dnf install xdg-user-dirs xdg-user-dirs-gtk
+## Fichiers et documentation
+
+Installez Git :
+
+```
+# dnf install -y git
 ```
 
-## EXTENSIONS gnome SUPPLÉMENTAIRES
-```bash
-sudo dnf install -y \
-	# gnome-shell-extension-appindicator \
-	# gnome-shell-extension-apps-menu \
-	gnome-shell-extension-background-logo \
-	gnome-shell-extension-blur-my-shell \
-	gnome-shell-extension-caffeine \
-	gnome-shell-extension-common \
-	# gnome-shell-extension-dash-to-dock \
-	# gnome-shell-extension-dash-to-panel \
-	gnome-shell-extension-just-perfection \
-	# gnome-shell-extension-launch-new-instance \
-	# gnome-shell-extension-places-menu \
-	gnome-shell-extension-pop-shell \
-	gnome-shell-extension-pop-shell-shortcut-overrides \
-	# gnome-shell-extension-refresh-wifi \
-	# gnome-shell-extension-status-icons \
-	# gnome-shell-extension-system-monitor \
-	# gnome-shell-extension-window-list \
-	# gnome-shell-extension-workspace-indicator \
+Récupérez les fichiers de cet atelier pratique dans `/root` :
+
+```
+# cd
+# git clone https://github.com/kikinovak/rockylinux-vienne
+# cd rockylinux-vienne
 ```
 
-## CONFIGURATION DE L'ENVIRONNEMENT GRAPHIQUE PAR DÉFAUT
-```bash
-sudo systemctl set-default graphical.target
-sudo reboot
+## Outils de base
+
+Le groupe `Base` contient une panoplie d'outils en ligne de commande
+raisonnablement complète.
+
+Afficher le groupe :
+
+```
+# dnf group list hidden | grep -i base
 ```
 
-## APPLICATIONS SUPPLÉMENTAIRES
-```bash
-sudo dnf install -y \
-	gedit 
+Installer le groupe :
+
+```
+# dnf group install Base
 ```
 
-## SUPPORT MULTIMÉDIA
-```bash
-sudo dnf install -y vlc
+## Personnaliser le shell Bash
+
+Installer le fichier `.bashrc` pour `root` .
+
+```
+# cp -vf bash/bashrc-root /root/.bashrc
 ```
 
-## SUPPORT POUR UN ENVIRONNEMENT DE COMPILATION
-```bash
-sudo  dnf group list --ids | grep development
-Outils de développement et bibliothèques pour C (c-development)
-   Outils de développement et bibliothèques pour D (d-development)
-   Outils de développement (development-tools)
-   KDE Frameworks 6 Software Development (kf6-software-development)
-   Outils de développement RPM (rpm-development-tools)
+Installer le fichier `.bashrc` pour l'utilisateur initial (`microlinux` dans
+l'exemple) :
+
+```
+# cp -vf bash/bashrc-user /home/microlinux/.bashrc
+# chown microlinux:microlinux /home/microlinux/.bashrc
 ```
 
-```bash
-sudo dnf group info development-tools
-sudo dnf group info c-development
-sudo dnf group info d-development
+Installer le fichier `.bashrc` pour les futurs utilisateurs :
+
+```
+# cp -vf bash/bashrc-user /etc/skel/.bashrc
 ```
 
-```bash
-sudo dnf install -y @development-tools @c-development @d-development
+## Personnaliser l'éditeur Vim
+
+Installer le fichier `.vimrc` pour `root` .
+
+```
+# cp -vf vim/vimrc /root/.vimrc
 ```
 
-## MISE À JOUR DES FIRMWARES ET UEFI DEPUIS LINUX
-> [fwupd : Mettre à jour les firmwares et UEFI depuis Linux](https://www.linuxtricks.fr/wiki/fwupd-mettre-a-jour-les-firmwares-et-uefi-depuis-linux)
+Installer le fichier `.vimrc` pour l'utilisateur initial (`microlinux` dans
+l'exemple) :
 
-```bash
-sudo dnf install -y fwupd
+```
+# cp -vf vim/vimrc /home/microlinux/.vimrc
+# chown microlinux:microlinux /home/microlinux/.vimrc
 ```
 
-# CUSTOMIZATION GNOME
-```bash
-echo "Configuration générale de GNOME"
-echo " - Boutons de fenêtre"
-gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
-echo " - Suramplification"
-gsettings set org.gnome.desktop.sound allow-volume-above-100-percent true
-echo " - Détacher les popups des fenêtres"
-gsettings set org.gnome.mutter attach-modal-dialogs false
-echo " - Affichage du calendrier dans le panneau supérieur"
-gsettings set org.gnome.desktop.calendar show-weekdate true
-echo " - Modification du format de la date et heure"
-gsettings set org.gnome.desktop.interface clock-show-date true
-gsettings set org.gnome.desktop.interface clock-show-seconds true
-gsettings set org.gnome.desktop.interface clock-show-weekday true
-gsettings set org.gnome.desktop.interface clock-format 24h
-#echo " - Localisation du pointeur via CTRL"
-#gsettings set org.gnome.desktop.interface locate-pointer true #BUG de FOCUS avec GIMP
-echo " - Paramétrage Touch Pad"
-gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing true
-gsettings set org.gnome.desktop.peripherals.touchpad click-method "areas"
-echo " - Désactivation des sons système"
-gsettings set org.gnome.desktop.wm.preferences audible-bell false
-echo " - Activation du mode nuit"
-gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
-echo " - Epuration des fichiers temporaires et de la corbeille de plus de 30 jours"
-gsettings set org.gnome.desktop.privacy remove-old-temp-files true
-gsettings set org.gnome.desktop.privacy remove-old-trash-files true
-gsettings set org.gnome.desktop.privacy old-files-age "30"
+Installer le fichier `.vimrc` pour les futurs utilisateurs :
 
-echo "Confidentialité de GNOME"
-echo " - Désactivation de l'envoi des rapports"
-gsettings set org.gnome.desktop.privacy report-technical-problems false
-echo " - Désactivation des statistiques des logiciels"
-gsettings set org.gnome.desktop.privacy send-software-usage-stats false
-
-echo "Personnalisation de GNOME"
-echo " - Application du thème sombre"
-gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
-
-echo "Configuration Nautilus"
-echo " - Désactivation de l ouverture du dossier lorsqu un élément est glissé dedans"
-gsettings set org.gnome.nautilus.preferences open-folder-on-dnd-hover false
-echo " - Activation du double clic"
-gsettings set org.gnome.nautilus.preferences click-policy 'double'
-echo " - Modification de l ordre de tri"
-gsettings set org.gtk.Settings.FileChooser sort-directories-first true
-gsettings set org.gtk.gtk4.Settings.FileChooser sort-directories-first true
-
-echo "Configuration de GNOME Logiciels"
-echo " - Désactivation du téléchargement automatique des mises à jour"
-gsettings set org.gnome.software download-updates false
-echo " - Activation de l'affichage des logiciels propriétaires"
-gsettings set org.gnome.software show-only-free-apps false
-#echo " - Autorisation de la mise à niveau vers des versions BETA"
-#gsettings set org.gnome.software show-upgrade-prerelease false
-
-echo "Configuration de GNOME Text Editor"
-gsettings set org.gnome.TextEditor highlight-current-line false
-gsettings set org.gnome.TextEditor restore-session false
-gsettings set org.gnome.TextEditor show-line-numbers true
-
-# echo "Configuration de GNOME Web"
-# gsettings set org.gnome.Epiphany ask-for-default false
-# gsettings set org.gnome.Epiphany homepage-url 'about:blank'
-# gsettings set org.gnome.Epiphany start-in-incognito-mode true
-
-
-# echo "Personnalisation de Dash-to-dock"
-# echo " - Activation de l'extension"
-# gnome-shell-extension-tool -e dash-to-dock@micxgx.gmail.com
-# echo " - Placement en bas, fixé et masquage intelligent"
-# gsettings set org.gnome.shell.extensions.dash-to-dock dock-position "BOTTOM"
-# gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
-# gsettings set org.gnome.shell.extensions.dash-to-dock autohide-in-fullscreen true 
-# echo " - Correction du bug de la double lettre"
-# gsettings set org.gnome.shell.extensions.dash-to-dock disable-overview-on-startup true
-
-# echo "Activation de Appindicator"
-# gnome-shell-extension-tool -e appindicatorsupport@rgcjonas.gmail.com
-
-echo "Personnalisation terminée."
-
-# gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas/ set org.gnome.shell.extensions.dash-to-dock show-trash false
+```
+# cp -vf vim/vimrc /etc/skel/.vimrc
 ```
 
-## ZSH
-### INSTALLATION DE ZSH
+## Configurer le dépôt de paquets EPEL
 
-```bash
-sudo dnf install -y zsh
+Le dépôt de paquets tiers EPEL (*Extra Packages for Enterprise Linux*) fournit
+un grand nombre de paquets logiciels qui ne sont pas officiellement inclus dans
+RHEL et ses clones.
+
+Activer le dépôt EPEL :
+
 ```
-Définir zsh par défaut :
-```bash
-chsh -s $(which zsh)
-```
-### INSTALLATION DE OHMYZSH
-```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
-### Plugin Zsh indispensable
-```bash
-git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-# edit .zshrc to include plugins plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+# dnf install -y epel-release
 ```
 
-### Installation du thème Powerlevel 10k
-```bash
-wget https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraMono/Regular/FiraMonoNerdFont-Regular.otf
-mkdir -p /home/allfab/.local/share/fonts
-cp -f FiraMonoNerdFont-Regular.otf /home/allfab/.local/share/fonts
-sudo mkdir -p /root/.local/share/fonts
-sudo cp -f FiraMonoNerdFont-Regular.otf /root/.local/share/fonts
+Ce dépôt nécessite l'activation du dépôt CRB (*Code Ready Builder*) :
+
+```
+# /usr/bin/crb enable
 ```
 
-#### Nerd-Fonts
-Sur Fedora :
-```bash
-git clone --depth=1 https://github.com/ryanoasis/nerd-fonts ~/.nerd-fonts
-cd .nerd-fonts 
-./install.sh
+Afficher la liste des dépôts configurés :
 
-sudo dnf install fontawesome-fonts
+```
+# dnf repolist
 ```
 
-```bash
-sudo dnf install -t fontawesome-fonts-all
-git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
-p10k configure
-# edit .zshrc
-ZSH_THEME="powerlevel10k/powerlevel10k"
-POWERLEVEL9K_MODE="nerdfont-complete"
+
+## Configurer le dépôt de paquets ELRepo
+
+Le dépôt de paquets tiers ELRepo (*Enterprise Linux Repository*) fournit
+surtout des kernels plus récents et toute une série de pilotes (ou *drivers*)
+pour RHEL et ses clones.
+
+Activer le dépôt ELRepo :
+
+```
+# dnf install -y elrepo-release
+```
+
+Afficher la liste des dépôts configurés :
+
+```
+# dnf repolist
+```
+
+## Configurer les dépôts de paquets RPMFusion
+
+Les quatre dépôts RPMFusion fournissent des paquets potentiellement
+problématiques en termes de licence (multimédia, paquets propriétaires, etc.)
+
+Activer le dépôt RPMFusion Free : 
+
+```
+# dnf install --nogpgcheck \
+  https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-9.noarch.rpm
+```
+
+Activer le dépôt RPMFusion Nonfree : 
+
+```
+# dnf install --nogpgcheck \
+  https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-9.noarch.rpm
+```
+
+Activer le dépôt RPMFusion Free Tainted :
+
+```
+# dnf install -y rpmfusion-free-release-tainted
+```
+
+Activer le dépôt RPMFusion Nonfree Tainted:
+
+```
+# dnf install -y rpmfusion-nonfree-release-tainted
+```
+
+Afficher la liste des dépôts configurés :
+
+```
+# dnf repolist
+```
+
+## Configurer le dépôt de paquets Google Chrome
+
+Éditer un fichier `/etc/yum.repos.d/google-chrome.repo` comme ceci :
+
+```
+[chrome]
+name=Chrome
+baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64
+enabled=1
+priority=10
+gpgcheck=1
+gpgkey=https://dl.google.com/linux/linux_signing_key.pub
+```
+
+Si tout se passe bien, une recherche sur `chrome` doit afficher quelque chose
+comme ceci :
+
+```
+# dnf search chrome
+...
+google-chrome-beta.x86_64 : Google Chrome (beta)
+google-chrome-canary.x86_64 : Google Chrome (canary)
+google-chrome-stable.x86_64 : Google Chrome
+google-chrome-unstable.x86_64 : Google Chrome (unstable)
+```
+
+
+## Installer GNOME
+
+Dans un premier temps, installer le paquet `ffmpeg` en provenance de RPMFusion.
+Ce paquet est une dépendance de KDE sous le capot, et de cette manière on est
+sûr de gérer correctement tous les formats audio et vidéo.
+
+``` 
+# dnf install -y ffmpeg 
+``` 
+
+Partant de là, on peut installer le groupe de paquets pour KDE :
+
+``` 
+# dnf group install "KDE (K Desktop Environment)"
+``` 
+
+Démarrer en mode graphique par défaut :
+
+```
+# systemctl set-default graphical.target
+```
+
+## Franciser le système
+
+Il se peut que le système n'utilise pas la bonne locale :
+
+```
+# localectl status
+System Locale: LANG=C.UTF-8
+    VC Keymap: ch-fr
+   X11 Layout: ch
+  X11 Variant: fr
+```
+
+Dans ce cas, on peut définir la langue française par défaut pour le système :
+
+```
+# localectl set-locale LANG=fr_FR.UTF-8
+```
+
+Vérifier si tout s'est bien passé :
+
+```
+# localectl status
+System Locale: LANG=fr_FR.UTF-8
+    VC Keymap: ch-fr
+   X11 Layout: ch
+  X11 Variant: fr
+```
+
+## Configuration initiale de GNOME
+
+Dans les Paramètres de KDE, ouvrir la section **Gestion de l'énergie** et
+désactiver tout ce qui ressemble à de la mise en veille.
+
+Faire une recherche sur `background` et `wallpaper` pour trouver une collection
+de fonds d'écran :
+
+```
+# dnf search background
+# dnf search wallpaper
+```
+
+## Applications Internet
+
+- Mozilla Firefox : `firefox`
+
+- Google Chrome : `google-chrome-stable`
+
+- Mozilla Thunderbird : `thunderbird`
+
+- Filezilla : `filezilla`
+
+- Client BitTorrent : `transmission`
+
+- Client IRC : `hexchat`
+
+- Client VNC : `krdc`
+
+
+## Applications Bureautique
+
+- LibreOffice :
+
+  * `libreoffice`
+
+  * `libreoffice-langpack-fr`
+
+  * `libreoffice-help-fr`
+
+
+## Applications Graphisme
+
+- Digikam : `digikam`
+
+- GIMP : `gimp`
+
+- Inkscape : `inkscape`
+
+- Scribus : `scribus`
+
+- Simple Scan : `simple-scan`
+
+
+## Applications Multimedia
+
+- Audacious : 
+
+  * `audacious`
+
+  * `audacious-plugins-freeworld`
+
+- Audacity : `audacity`
+
+- VLC : `vlc`
+
+- MPlayer : `mplayer`
+
+- DVDCSS : `libdvdcss`
+
+- Openshot : `openshot`
+
+- Kdenlive : `kdenlive`
+
+
+## Applications Utilitaires
+
+- Ark : `ark`
+
+- KeePassXC : `keepassxc`
+
+
+## AnyDesk
+
+Éditer un fichier `/etc/yum.repos.d/anydesk.repo` :
+
+```
+[anydesk]
+name=AnyDesk
+enabled=1
+baseurl=http://rpm.anydesk.com/rhel/$basearch/
+gpgcheck=1
+gpgkey=https://keys.anydesk.com/repos/RPM-GPG-KEY
+```
+
+Installer AnyDesk :
+
+```
+# dnf install -y anydesk
 ```
