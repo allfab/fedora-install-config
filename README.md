@@ -82,6 +82,13 @@ Exemple avec UEFI/GPT (`gdisk`) :
   /dev/sda4  10692608 117229567 106536960 50.8G Linux filesystem
 ```
 
+
+```
+Number  Start (sector)    End (sector)  Size       Code  Name
+   1            2048         1230847   600.0 MiB   EF00  EFI System Partition
+   2         1230848         3327999   1024.0 MiB  EA00  
+   3         3328000      1953523711   929.9 GiB   8304
+```
 - ef00 EFI System partition
 - ef02 BIOS boot partition
 - 8300 Linux filesystem
