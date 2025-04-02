@@ -138,7 +138,7 @@ Number  Start (sector)    End (sector)  Size       Code  Name
 
 - Définissez le mot de passe `root`.
 
-- Créez un utilisateur normal, par exemple `microlinux`.
+- Créez un utilisateur normal, par exemple `allfab`.
 
 - Cochez la case **Faire de cet utilisateur un administrateur**. L’utilisateur
   sera ajouté au groupe `wheel` et pourra se servir de la commande `sudo`.
