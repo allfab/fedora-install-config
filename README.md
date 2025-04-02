@@ -161,22 +161,6 @@ Redémarrez :
 # reboot
 ```
 
-## Fichiers et documentation
-
-Installez Git :
-
-```
-# dnf install -y git
-```
-
-Récupérez les fichiers de cet atelier pratique dans `/root` :
-
-```
-# cd
-# git clone https://github.com/kikinovak/rockylinux-vienne
-# cd rockylinux-vienne
-```
-
 ## Outils de base
 
 Le groupe `Base` contient une panoplie d'outils en ligne de commande
@@ -194,6 +178,22 @@ Installer le groupe :
 # dnf group install Base
 ```
 
+## Configuration de base
+
+Installez Git :
+
+```
+# dnf install -y git
+```
+
+Récupérez les fichiers de cet atelier pratique dans `/home/allfab` :
+
+```
+# cd /home/allfab
+# git clone https://github.com/allfab/fedora-install-config.git
+# cd fedora-install-config
+```
+
 ## Personnaliser le shell Bash
 
 Installer le fichier `.bashrc` pour `root` .
@@ -202,12 +202,12 @@ Installer le fichier `.bashrc` pour `root` .
 # cp -vf bash/bashrc-root /root/.bashrc
 ```
 
-Installer le fichier `.bashrc` pour l'utilisateur initial (`microlinux` dans
+Installer le fichier `.bashrc` pour l'utilisateur initial (`allfab` dans
 l'exemple) :
 
 ```
-# cp -vf bash/bashrc-user /home/microlinux/.bashrc
-# chown microlinux:microlinux /home/microlinux/.bashrc
+# cp -vf bash/bashrc-user /home/allfab/.bashrc
+# chown allfab:allfab /home/allfab/.bashrc
 ```
 
 Installer le fichier `.bashrc` pour les futurs utilisateurs :
@@ -224,12 +224,12 @@ Installer le fichier `.vimrc` pour `root` .
 # cp -vf vim/vimrc /root/.vimrc
 ```
 
-Installer le fichier `.vimrc` pour l'utilisateur initial (`microlinux` dans
+Installer le fichier `.vimrc` pour l'utilisateur initial (`allfab` dans
 l'exemple) :
 
 ```
-# cp -vf vim/vimrc /home/microlinux/.vimrc
-# chown microlinux:microlinux /home/microlinux/.vimrc
+# cp -vf vim/vimrc /home/allfab/.vimrc
+# chown allfab:allfab /home/allfab/.vimrc
 ```
 
 Installer le fichier `.vimrc` pour les futurs utilisateurs :
