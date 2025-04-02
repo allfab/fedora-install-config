@@ -161,21 +161,147 @@ Redémarrez :
 # reboot
 ```
 
-## Outils de base
+## Installation de l'environnement graphique
 
-Le groupe `Base` contient une panoplie d'outils en ligne de commande
-raisonnablement complète.
-
-Afficher le groupe :
-
+Découverte des différents environnements de bureau disponible :
+```bash
+dnf group list --hidden | grep -i desktop
+Mise à jour et chargement des dépôts :
+Dépôts chargés.
+basic-desktop                Basic Desktop                                      no
+budgie-desktop               Budgie                                             no
+budgie-desktop-apps          Budgie Desktop Applications                        no
+cinnamon-desktop             Cinnamon                                           no
+cosmic-desktop               COSMIC Desktop                                     no
+cosmic-desktop-apps          COSMIC Desktop Supplementary Applications          no
+critical-path-deepin-desktop Critical Path (Deepin desktop)                     no
+deepin-desktop               Deepin Desktop Environment                         no
+deepin-desktop-apps          Deepin Desktop Applications                        no
+deepin-desktop-media         Media packages for Deepin Desktop                  no
+deepin-desktop-office        Deepin Desktop Office                              no
+desktop-accessibility        Desktop accessibility                              no
+enlightenment-desktop        Enlightenment                                      no
+gnome-desktop                GNOME                                              no
+gnome-games                  Extra games for the GNOME Desktop                  no
+guest-desktop-agents         Guest Desktop Agents                               no
+kde-desktop                  KDE                                                no
+lxde-apps                    Applications for the LXDE Desktop                  no
+lxde-desktop                 LXDE                                               no
+lxqt-apps                    Applications for the LXQt Desktop                  no
+lxqt-desktop                 LXQt                                               no
+mate-desktop                 MATE                                               no
+miraclewm-desktop            Miracle Window Manager Desktop                     no
+phosh-desktop                A phone/tablet UX environment                      no
+sugar-desktop                Sugar Desktop Environment                          no
+xfce-apps                    Applications for the Xfce Desktop                  no
+xfce-desktop                 Xfce                                               no
 ```
-# dnf group list hidden | grep -i base
+
+### Information sur le groupe de packages :
+```bash
+dnf group info gnome-desktop
+```
+ou
+```bash
+dnf group info "GNOME"
 ```
 
-Installer le groupe :
+### Installation de GNOME
 
+Installer les groupes :
+```bash
+sudo dnf install @base-x @gnome-desktop
 ```
-# dnf group install Base
+
+Ou en choississant ces paquets :
+```bash
+sudo dnf install \
+    @base-x \
+    @core \
+    @guest-desktop-agents \
+    @hardware-support \
+    @multimedia \
+    @networkmanager-submodules \
+    @standard \
+    dconf \
+    gdm \
+    gnome-boxes \
+    gnome-connections \
+    gnome-control-center \
+    gnome-initial-setup \
+    gnome-session-wayland-session \
+    gnome-settings-daemon \
+    gnome-shell \
+    gnome-software \
+    gnome-text-editor \
+    nautilus \
+    polkit \
+    ptyxis \
+    yelp \
+    ModemManager \
+    NetworkManager-adsl \
+    NetworkManager-openconnect-gnome \
+    NetworkManager-openvpn-gnome \
+    NetworkManager-ppp \
+    NetworkManager-pptp-gnome \
+    NetworkManager-ssh-gnome \
+    NetworkManager-vpnc-gnome \
+    NetworkManager-wwan \
+    PackageKit-command-not-found \
+    PackageKit-gtk3-module \
+    adobe-source-code-pro-fonts \
+    avahi \
+    baobab \
+    evince \
+    evince-djvu \
+    fprintd-pam \
+    glib-networking \
+    gnome-backgrounds \
+    gnome-bluetooth \
+    gnome-browser-connector \
+    gnome-calculator \
+    gnome-calendar \
+    gnome-characters \
+    gnome-classic-session \
+    gnome-clocks \
+    gnome-color-managerv
+    gnome-contacts \
+    gnome-disk-utility \
+    gnome-epub-thumbnailer \
+    gnome-font-viewer \
+    gnome-logs \
+    gnome-maps \
+    gnome-remote-desktop \
+    gnome-system-monitor \
+    gnome-user-docs \
+    gnome-user-share \
+    gnome-weather \
+    gvfs-afc \
+    gvfs-afp \
+    gvfs-archive \
+    gvfs-fuse \
+    gvfs-goa \
+    gvfs-gphoto2 \
+    gvfs-mtp \
+    gvfs-smb \
+    librsvg2 \
+    libsane-hpaio \
+    localsearch \
+    loupe \
+    mesa-dri-drivers \
+    mesa-libEGL \
+    rygel \
+    sane-backends-drivers-scanners \
+    simple-scan \
+    snapshot \
+    sushi \
+    systemd-oomd-defaults \
+    tinysparql \
+    totem \
+    xdg-desktop-portal \
+    xdg-desktop-portal-gnome \
+    xdg-desktop-portal-gtk \
+    xdg-user-dirs-gtk
 ```
 
 ## Configuration de base

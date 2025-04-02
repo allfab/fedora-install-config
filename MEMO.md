@@ -328,7 +328,7 @@ sudo dnf group install "Hardware Support"
 ```bash
 sudo dnf install \
 	desktop-backgrounds-gnome \
-	f40-backgrounds-gnome \
+	f42-backgrounds-gnome \
 	fedora-chromium-config-gnome \
 	firefox \
 	fros-gnome \
@@ -398,24 +398,24 @@ sudo dnf install xdg-user-dirs xdg-user-dirs-gtk
 ## EXTENSIONS gnome SUPPLÉMENTAIRES
 ```bash
 sudo dnf install -y \
-	# gnome-shell-extension-appindicator \
-	# gnome-shell-extension-apps-menu \
+	gnome-shell-extension-appindicator \
+	gnome-shell-extension-apps-menu \
 	gnome-shell-extension-background-logo \
 	gnome-shell-extension-blur-my-shell \
 	gnome-shell-extension-caffeine \
 	gnome-shell-extension-common \
-	# gnome-shell-extension-dash-to-dock \
-	# gnome-shell-extension-dash-to-panel \
+	gnome-shell-extension-dash-to-dock \
+	gnome-shell-extension-dash-to-panel \
 	gnome-shell-extension-just-perfection \
-	# gnome-shell-extension-launch-new-instance \
-	# gnome-shell-extension-places-menu \
+	gnome-shell-extension-launch-new-instance \
+	gnome-shell-extension-places-menu \
 	gnome-shell-extension-pop-shell \
 	gnome-shell-extension-pop-shell-shortcut-overrides \
-	# gnome-shell-extension-refresh-wifi \
-	# gnome-shell-extension-status-icons \
-	# gnome-shell-extension-system-monitor \
-	# gnome-shell-extension-window-list \
-	# gnome-shell-extension-workspace-indicator \
+	gnome-shell-extension-refresh-wifi \
+	gnome-shell-extension-status-icons \
+	gnome-shell-extension-system-monitor \
+	gnome-shell-extension-window-list \
+	gnome-shell-extension-workspace-indicator
 ```
 
 ## CONFIGURATION DE L'ENVIRONNEMENT GRAPHIQUE PAR DÉFAUT
