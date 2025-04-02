@@ -89,11 +89,24 @@ Number  Start (sector)    End (sector)  Size       Code  Name
    3         3328000      1953523711   929.9 GiB   8304
 ```
 
-- ef00 EFI System partition
-- ef02 BIOS boot partition
-- 8300 Linux filesystem
-- 8200 Linux Swap
-- 8e00 Linux LVM
+| Type de partition     | Point de montage | Code `gdisk`  |
+|-----------------------|------------------|---------------|
+| Linux filesystem      | Tout             | `8300`        |
+| EFI system partition  | Tout             | `ef00`        |
+| BIOS boot partition   | Aucun            | `ef02`        |
+| XBOOTLDR partition    | Tout             | `ea00`        |
+| Linux x86-64 root (/) | /                | `8304`        |
+| Linux swap            | [SWAP]           | `8200`        |
+| Linux /home           | /home            | `8302`        |
+| Linux /srv            | /srv             | `8306`        |
+| Linux /var            | /var             | `8310`        |
+| Linux /var/tmp        | /var/tmp         | `8311`        |
+| Linux LVM             | Tout             | `8e00`        |
+| Linux RAID            | Tout             | `fd00`        |
+| Linux LUKS            | Tout             | `8309`        |
+| Linux dm-crypt        | Tout             | `8308`        |
+
+---
 
 > Idéalement, créez une partition `swap` égale à la quantité de RAM disponible
 > sur votre machine. Utilisez la commande `free -m` pour en savoir plus.
