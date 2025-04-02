@@ -14,6 +14,7 @@ then
 fi
 
 echo "${green}MISE À JOUR SYSTÈME${reset}"
+dnf check update -y
 
 echo "${green}INSTALLATION DE L'ENVIRONNEMENT DE BUREAU gnome ET OUTILS DE BASE${reset}"
 dnf install -y \
@@ -40,6 +41,7 @@ dnf install -y \
     fprintd-pam \
     fros-gnome \
     gdm \
+    git \
     glib-networking \
     gnome-abrt \
     gnome-autoar \
@@ -89,6 +91,7 @@ dnf install -y \
     gnome-shell-extension-caffeine \
     gnome-shell-extension-common \
     gnome-shell-extension-just-perfection \
+    gnome-shell-extension-system-monitor \
     gnome-software \
     gnome-software-fedora-langpacks \
     gnome-system-log \
@@ -142,7 +145,7 @@ dnf install -y \
     xdg-user-dirs-gtk
     
 echo "${green}SUPPRESSION DES PAQUETS NON NÉCESSAIRES${reset}"
-dnf remove -y gnome-boxes gnome-tour yelp
+dnf remove -y gnome-tour
 
 echo "${green}DÉFINITION DE LA CIBLE PAR DÉFAUT SUR graphical.target (shell graphique)${reset}"
 systemctl set-default graphical.target

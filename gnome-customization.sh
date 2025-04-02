@@ -82,7 +82,7 @@ gsettings set org.gnome.Ptyxis restore-session false
 echo "Application des fonts Red Hat"
 if rpm -q redhat-mono-fonts &> /dev/null
 then
-	gsettings set org.gnome.Ptyxis font-name 'Red Hat Mono Regular 12' 
+	gsettings set org.gnome.Ptyxis font-name 'Red Hat Mono Regular 11' 
 fi
 
 if rpm -q redhat-text-fonts &> /dev/null
