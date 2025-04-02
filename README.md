@@ -304,6 +304,19 @@ sudo dnf install \
     xdg-user-dirs-gtk
 ```
 
+## Installation des extensions GNOME
+
+```bash
+VERSION=$(
+  curl --silent "https://api.github.com/repos/corecoding/Vitals/releases/latest" | \
+  grep '"tag_name":' | \
+  sed -E 's/.*"v([^"]+)".*/\1/'
+)
+```
+
+https://github.com/corecoding/Vitals
+
+
 ## Configuration de base
 
 Installez Git :
