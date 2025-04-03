@@ -147,17 +147,20 @@ dnf install -y \
 echo "${green}SUPPRESSION DES PAQUETS NON NÉCESSAIRES${reset}"
 dnf remove -y gnome-tour
 
-echo "${green}PERSONNALISATION DU SHELL BASH${reset}"
-cp -vf conf/bash/bashrc-root /root/.bashrc
-cp -vf conf/bash/bashrc-user /home/allfab/.bashrc
-cp -vf conf/bash/bashrc-user /etc/skel/.bashrc
-chown allfab:allfab /home/allfab/.bashrc
+# echo "${green}CLONAGE DU DÉPÔT${reset}"
+# git clone https://github.com/allfab/fedora-install-config.git
 
-echo "${green}PERSONNALISATION DE L'ÉDITEUR vim${reset}"
-cp -vf conf/vim/vimrc /root/.vimrc
-cp -vf conf/vim/vimrc /home/allfab/.vimrc
-cp -vf conf/vim/vimrc /etc/skel/.vimrc
-chown allfab:allfab /home/allfab/.vimrc
+# echo "${green}PERSONNALISATION DU SHELL BASH${reset}"
+# cp -vf conf/bash/bashrc-root /root/.bashrc
+# cp -vf conf/bash/bashrc-user /home/allfab/.bashrc
+# cp -vf conf/bash/bashrc-user /etc/skel/.bashrc
+# chown allfab:allfab /home/allfab/.bashrc
+
+# echo "${green}PERSONNALISATION DE L'ÉDITEUR vim${reset}"
+# cp -vf conf/vim/vimrc /root/.vimrc
+# cp -vf conf/vim/vimrc /home/allfab/.vimrc
+# cp -vf conf/vim/vimrc /etc/skel/.vimrc
+# chown allfab:allfab /home/allfab/.vimrc
 
 echo "${green}DÉFINITION DE LA CIBLE PAR DÉFAUT SUR graphical.target (shell graphique)${reset}"
 systemctl set-default graphical.target
