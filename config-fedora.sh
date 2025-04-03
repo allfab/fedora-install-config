@@ -148,7 +148,7 @@ echo "${green}SUPPRESSION DES PAQUETS NON NÉCESSAIRES${reset}"
 dnf remove -y gnome-tour
 
 # echo "${green}CLONAGE DU DÉPÔT${reset}"
-# git clone https://github.com/allfab/fedora-install-config.git
+# git clone https://github.com/allfab/fedora-install-config.git ~/downloads/ && cd ~/downloads/fedora-install-config
 
 # echo "${green}PERSONNALISATION DU SHELL BASH${reset}"
 # cp -vf conf/bash/bashrc-root /root/.bashrc

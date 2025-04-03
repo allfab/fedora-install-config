@@ -213,165 +213,195 @@ Installer les groupes :
 sudo dnf install @base-x @gnome-desktop
 ```
 
-Ou en choississant ces paquets :
+Ou en choississant ses paquets :
 ```bash
-sudo dnf install \
-    @base-x \
-    @core \
-    @guest-desktop-agents \
-    @hardware-support \
-    @multimedia \
-    @networkmanager-submodules \
-    @standard \
-    dconf \
-    gdm \
-    gnome-boxes \
-    gnome-connections \
-    gnome-control-center \
-    gnome-initial-setup \
-    gnome-session-wayland-session \
-    gnome-settings-daemon \
-    gnome-shell \
-    gnome-software \
-    gnome-text-editor \
-    nautilus \
-    polkit \
-    ptyxis \
-    yelp \
-    ModemManager \
-    NetworkManager-adsl \
-    NetworkManager-openconnect-gnome \
-    NetworkManager-openvpn-gnome \
-    NetworkManager-ppp \
-    NetworkManager-pptp-gnome \
-    NetworkManager-ssh-gnome \
-    NetworkManager-vpnc-gnome \
-    NetworkManager-wwan \
-    PackageKit-command-not-found \
-    PackageKit-gtk3-module \
-    adobe-source-code-pro-fonts \
-    avahi \
-    baobab \
-    evince \
-    evince-djvu \
-    fprintd-pam \
-    glib-networking \
-    gnome-backgrounds \
-    gnome-bluetooth \
-    gnome-browser-connector \
-    gnome-calculator \
-    gnome-calendar \
-    gnome-characters \
-    gnome-classic-session \
-    gnome-clocks \
-    gnome-color-managerv
-    gnome-contacts \
-    gnome-disk-utility \
-    gnome-epub-thumbnailer \
-    gnome-font-viewer \
-    gnome-logs \
-    gnome-maps \
-    gnome-remote-desktop \
-    gnome-system-monitor \
-    gnome-user-docs \
-    gnome-user-share \
-    gnome-weather \
-    gvfs-afc \
-    gvfs-afp \
-    gvfs-archive \
-    gvfs-fuse \
-    gvfs-goa \
-    gvfs-gphoto2 \
-    gvfs-mtp \
-    gvfs-smb \
-    librsvg2 \
-    libsane-hpaio \
-    localsearch \
-    loupe \
-    mesa-dri-drivers \
-    mesa-libEGL \
-    rygel \
-    sane-backends-drivers-scanners \
-    simple-scan \
-    snapshot \
-    sushi \
-    systemd-oomd-defaults \
-    tinysparql \
-    totem \
-    unzip \
-    xdg-desktop-portal \
-    xdg-desktop-portal-gnome \
-    xdg-desktop-portal-gtk \
-    xdg-user-dirs-gtk
+sudo dnf install -y \
+  @base-x \
+  @c-development \
+  @core \
+  @d-development \
+  @development-tools \
+  @guest-desktop-agents \
+  @hardware-support \
+  @multimedia \
+  @networkmanager-submodules \
+  @standard \
+  adobe-source-code-pro-fonts \
+  avahi \
+  baobab \
+  dconf \
+  desktop-backgrounds-gnome \
+  evince \
+  evince-djvu \
+  f42-backgrounds-gnome \
+  fedora-chromium-config-gnome \
+  firefox \
+  fprintd-pam \
+  fros-gnome \
+  gdm \
+  git \
+  glib-networking \
+  gnome-abrt \
+  gnome-autoar \
+  gnome-backgrounds \
+  gnome-backgrounds-extras \
+  gnome-battery-bench \
+  gnome-bluetooth \
+  gnome-bluetooth-libs \
+  gnome-browser-connector \
+  gnome-calculator \
+  gnome-calendar \
+  gnome-characters \
+  gnome-classic-session \
+  gnome-classic-session-xsession \
+  gnome-clocks \
+  gnome-color-manager \
+  gnome-connections \
+  gnome-control-center \
+  gnome-desktop3 \
+  gnome-desktop4 \
+  gnome-disk-utility \
+  gnome-epub-thumbnailer \
+  gnome-extensions-app \
+  gnome-firmware \
+  gnome-font-viewer \
+  gnome-icon-theme \
+  gnome-initial-setup \
+  gnome-keyring \
+  gnome-keyring-pam \
+  gnome-logs \
+  gnome-menus \
+  gnome-monitor-config \
+  gnome-nettool \
+  gnome-online-accounts \
+  gnome-power-manager \
+  gnome-remote-desktop \
+  gnome-screenshot \
+  gnome-session \
+  gnome-session-wayland-session \
+  gnome-session-xsession \
+  gnome-settings-daemon \
+  gnome-shell \
+  gnome-shell-extension-appindicator \
+  gnome-shell-extension-background-logo \
+  gnome-shell-extension-blur-my-shell \
+  gnome-shell-extension-common \
+  gnome-shell-extension-system-monitor \
+  gnome-software \
+  gnome-software-fedora-langpacks \
+  gnome-system-log \
+  gnome-system-monitor \
+  gnome-terminal \
+  gnome-terminal-nautilus \
+  gnome-text-editor \
+  gnome-themes-extra \
+  gnome-tweaks \
+  gnome-usage \
+  gnome-user-docs \
+  gnome-user-share \
+  gvfs-afc \
+  gvfs-afp \
+  gvfs-archive \
+  gvfs-fuse \
+  gvfs-goa \
+  gvfs-gphoto2 \
+  gvfs-mtp \
+  gvfs-smb \
+  libgtop2-devel \
+  librsvg2 \
+  libsane-hpaio \
+  lm_sensors \
+  localsearch \
+  loupe \
+  mesa-dri-drivers \
+  mesa-libEGL \
+  ModemManager \
+  nautilus \
+  NetworkManager-adsl \
+  NetworkManager-openconnect-gnome \
+  NetworkManager-openvpn-gnome \
+  NetworkManager-ppp \
+  NetworkManager-pptp-gnome \
+  NetworkManager-ssh-gnome \
+  NetworkManager-vpnc-gnome \
+  NetworkManager-wwan \
+  PackageKit-command-not-found \
+  PackageKit-gtk3-module \
+  polkit \
+  ptyxis \
+  rygel \
+  sane-backends-drivers-scanners \
+  snapshot \
+  sushi \
+  systemd-oomd-defaults \
+  tinysparql \
+  unzip \
+  vlc \
+  xdg-desktop-portal \
+  xdg-desktop-portal-gnome \
+  xdg-desktop-portal-gtk \
+  xdg-user-dirs-gtk
 ```
 
-## Installation des extensions GNOME
-
-- [`Color Picker`](https://extensions.gnome.org/extension/3396/color-picker/)
-- [`Logo Menu`](https://extensions.gnome.org/extension/4451/logo-menu/)
-- [`Space Bar`](https://extensions.gnome.org/extension/5090/space-bar/)
-- [`Top Bar Organizer`](https://extensions.gnome.org/extension/4356/top-bar-organizer/)
-- [`Vitals`](https://extensions.gnome.org/extension/1460/vitals/)
-
+## Suppression de paquets non nécessaires
+```bash
+dnf remove -y gnome-tour
+```
 
 ## Configuration de base
-
 Installez Git :
-
-```
-# dnf install -y git
+```bash
+dnf install -y git
 ```
 
 Récupérez les fichiers de cet atelier pratique dans `/home/allfab` :
-
-```
-# cd /home/allfab
-# git clone https://github.com/allfab/fedora-install-config.git
-# cd fedora-install-config
+```bash
+cd /home/allfab
+git clone https://github.com/allfab/fedora-install-config.git
+cd fedora-install-config
 ```
 
 ## Personnaliser le shell Bash
-
 Installer le fichier `.bashrc` pour `root` .
 
-```
-# cp -vf bash/bashrc-root /root/.bashrc
+```bash
+sudo cp -vf conf/bash/bashrc-root /root/.bashrc
 ```
 
 Installer le fichier `.bashrc` pour l'utilisateur initial (`allfab` dans
 l'exemple) :
 
-```
-# cp -vf bash/bashrc-user /home/allfab/.bashrc
-# chown allfab:allfab /home/allfab/.bashrc
+```bash
+cp -vf conf/bash/bashrc-user /home/allfab/.bashrc
+sudo chown allfab:allfab /home/allfab/.bashrc
 ```
 
 Installer le fichier `.bashrc` pour les futurs utilisateurs :
 
-```
-# cp -vf bash/bashrc-user /etc/skel/.bashrc
+```bash
+sudo cp -vf conf/bash/bashrc-user /etc/skel/.bashrc
 ```
 
 ## Personnaliser l'éditeur Vim
 
 Installer le fichier `.vimrc` pour `root` .
 
-```
-# cp -vf vim/vimrc /root/.vimrc
+```bash
+sudo cp -vf vim/vimrc /root/.vimrc
 ```
 
 Installer le fichier `.vimrc` pour l'utilisateur initial (`allfab` dans
 l'exemple) :
 
-```
-# cp -vf vim/vimrc /home/allfab/.vimrc
-# chown allfab:allfab /home/allfab/.vimrc
+```bash
+sudo cp -vf conf/vim/vimrc /home/allfab/.vimrc
+sudo chown allfab:allfab /home/allfab/.vimrc
 ```
 
 Installer le fichier `.vimrc` pour les futurs utilisateurs :
 
-```
-# cp -vf vim/vimrc /etc/skel/.vimrc
+```bash
+sudo cp -vf conf/vim/vimrc /etc/skel/.vimrc
 ```
 
 ## Configurer le dépôt de paquets EPEL
@@ -382,20 +412,20 @@ RHEL et ses clones.
 
 Activer le dépôt EPEL :
 
-```
-# dnf install -y epel-release
+```bash
+sudo dnf install -y epel-release
 ```
 
 Ce dépôt nécessite l'activation du dépôt CRB (*Code Ready Builder*) :
 
-```
-# /usr/bin/crb enable
+```bash
+sudo /usr/bin/crb enable
 ```
 
 Afficher la liste des dépôts configurés :
 
-```
-# dnf repolist
+```bash
+dnf repolist
 ```
 
 ## Configurer les dépôts de paquets RPMFusion
@@ -405,28 +435,28 @@ problématiques en termes de licence (multimédia, paquets propriétaires, etc.)
 
 Activer le dépôt RPMFusion Free : 
 
-```
-# dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+```bash
+dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 ```
 
 Activer le dépôt RPMFusion Nonfree : 
 
-```
-# dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+```bash
+dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 ```
 
 Afficher la liste des dépôts configurés :
 
-```
-# dnf repolist
+```bash
+dnf repolist
 ```
 
 ## Franciser le système
 
 Il se peut que le système n'utilise pas la bonne locale :
 
-```
-# localectl status
+```bash
+localectl status
 System Locale: LANG=C.UTF-8
     VC Keymap: ch-fr
    X11 Layout: ch
@@ -435,16 +465,24 @@ System Locale: LANG=C.UTF-8
 
 Dans ce cas, on peut définir la langue française par défaut pour le système :
 
-```
-# localectl set-locale LANG=fr_FR.UTF-8
+```bash
+localectl set-locale LANG=fr_FR.UTF-8
 ```
 
 Vérifier si tout s'est bien passé :
 
-```
-# localectl status
+```bash
+localectl status
 System Locale: LANG=fr_FR.UTF-8
     VC Keymap: fr-fr
    X11 Layout: fr
   X11 Variant: fr
 ```
+
+## Installation des extensions GNOME
+
+- [`Color Picker`](https://extensions.gnome.org/extension/3396/color-picker/)
+- [`Logo Menu`](https://extensions.gnome.org/extension/4451/logo-menu/)
+- [`Space Bar`](https://extensions.gnome.org/extension/5090/space-bar/)
+- [`Top Bar Organizer`](https://extensions.gnome.org/extension/4356/top-bar-organizer/)
+- [`Vitals`](https://extensions.gnome.org/extension/1460/vitals/)
