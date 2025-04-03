@@ -85,12 +85,9 @@ dnf install -y \
     gnome-settings-daemon \
     gnome-shell \
     gnome-shell-extension-appindicator \
-    gnome-shell-extension-apps-menu \
     gnome-shell-extension-background-logo \
     gnome-shell-extension-blur-my-shell \
-    gnome-shell-extension-caffeine \
     gnome-shell-extension-common \
-    gnome-shell-extension-just-perfection \
     gnome-shell-extension-system-monitor \
     gnome-software \
     gnome-software-fedora-langpacks \
@@ -112,8 +109,10 @@ dnf install -y \
     gvfs-gphoto2 \
     gvfs-mtp \
     gvfs-smb \
+    libgtop2-devel \
     librsvg2 \
     libsane-hpaio \
+    lm_sensors \
     localsearch \
     loupe \
     mesa-dri-drivers \
@@ -138,6 +137,7 @@ dnf install -y \
     sushi \
     systemd-oomd-defaults \
     tinysparql \
+    unzip \
     vlc \
     xdg-desktop-portal \
     xdg-desktop-portal-gnome \
@@ -147,8 +147,31 @@ dnf install -y \
 echo "${green}SUPPRESSION DES PAQUETS NON NÉCESSAIRES${reset}"
 dnf remove -y gnome-tour
 
+echo "${green}PERSONNALISATION DU SHELL BASH${reset}"
+cp -vf conf/bash/bashrc-root /root/.bashrc
+cp -vf conf/bash/bashrc-user /home/allfab/.bashrc
+cp -vf conf/bash/bashrc-user /etc/skel/.bashrc
+chown allfab:allfab /home/allfab/.bashrc
+
+echo "${green}PERSONNALISATION DE L'ÉDITEUR vim${reset}"
+cp -vf conf/vim/vimrc /root/.vimrc
+cp -vf conf/vim/vimrc /home/allfab/.vimrc
+cp -vf conf/vim/vimrc /etc/skel/.vimrc
+chown allfab:allfab /home/allfab/.vimrc
+
 echo "${green}DÉFINITION DE LA CIBLE PAR DÉFAUT SUR graphical.target (shell graphique)${reset}"
 systemctl set-default graphical.target
+
+echo "${green}CONFIGURATION DU DÉPÔT epel${reset}"
+dnf install -y epel-release
+/usr/bin/crb enable
+
+echo "${green}CONFIGURATION DU DÉPÔT RPMFusion${reset}"
+dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+echo "${green}FRANCISER LE SYSTÈME${reset}"
+localectl set-locale LANG=fr_FR.UTF-8
 
 echo "${green}REDÉMARRAGE DE LA MACHINE${reset}"
 reboot

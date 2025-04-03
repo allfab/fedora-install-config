@@ -298,6 +298,7 @@ sudo dnf install \
     systemd-oomd-defaults \
     tinysparql \
     totem \
+    unzip \
     xdg-desktop-portal \
     xdg-desktop-portal-gnome \
     xdg-desktop-portal-gtk \
@@ -306,15 +307,11 @@ sudo dnf install \
 
 ## Installation des extensions GNOME
 
-```bash
-VERSION=$(
-  curl --silent "https://api.github.com/repos/corecoding/Vitals/releases/latest" | \
-  grep '"tag_name":' | \
-  sed -E 's/.*"v([^"]+)".*/\1/'
-)
-```
-
-https://github.com/corecoding/Vitals
+- [`Color Picker`](https://extensions.gnome.org/extension/3396/color-picker/)
+- [`Logo Menu`](https://extensions.gnome.org/extension/4451/logo-menu/)
+- [`Space Bar`](https://extensions.gnome.org/extension/5090/space-bar/)
+- [`Top Bar Organizer`](https://extensions.gnome.org/extension/4356/top-bar-organizer/)
+- [`Vitals`](https://extensions.gnome.org/extension/1460/vitals/)
 
 
 ## Configuration de base
@@ -401,25 +398,6 @@ Afficher la liste des dépôts configurés :
 # dnf repolist
 ```
 
-
-## Configurer le dépôt de paquets ELRepo
-
-Le dépôt de paquets tiers ELRepo (*Enterprise Linux Repository*) fournit
-surtout des kernels plus récents et toute une série de pilotes (ou *drivers*)
-pour RHEL et ses clones.
-
-Activer le dépôt ELRepo :
-
-```
-# dnf install -y elrepo-release
-```
-
-Afficher la liste des dépôts configurés :
-
-```
-# dnf repolist
-```
-
 ## Configurer les dépôts de paquets RPMFusion
 
 Les quatre dépôts RPMFusion fournissent des paquets potentiellement
@@ -428,82 +406,19 @@ problématiques en termes de licence (multimédia, paquets propriétaires, etc.)
 Activer le dépôt RPMFusion Free : 
 
 ```
-# dnf install --nogpgcheck \
-  https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-9.noarch.rpm
+# dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 ```
 
 Activer le dépôt RPMFusion Nonfree : 
 
 ```
-# dnf install --nogpgcheck \
-  https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-9.noarch.rpm
-```
-
-Activer le dépôt RPMFusion Free Tainted :
-
-```
-# dnf install -y rpmfusion-free-release-tainted
-```
-
-Activer le dépôt RPMFusion Nonfree Tainted:
-
-```
-# dnf install -y rpmfusion-nonfree-release-tainted
+# dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 ```
 
 Afficher la liste des dépôts configurés :
 
 ```
 # dnf repolist
-```
-
-## Configurer le dépôt de paquets Google Chrome
-
-Éditer un fichier `/etc/yum.repos.d/google-chrome.repo` comme ceci :
-
-```
-[chrome]
-name=Chrome
-baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64
-enabled=1
-priority=10
-gpgcheck=1
-gpgkey=https://dl.google.com/linux/linux_signing_key.pub
-```
-
-Si tout se passe bien, une recherche sur `chrome` doit afficher quelque chose
-comme ceci :
-
-```
-# dnf search chrome
-...
-google-chrome-beta.x86_64 : Google Chrome (beta)
-google-chrome-canary.x86_64 : Google Chrome (canary)
-google-chrome-stable.x86_64 : Google Chrome
-google-chrome-unstable.x86_64 : Google Chrome (unstable)
-```
-
-
-## Installer GNOME
-
-Dans un premier temps, installer le paquet `ffmpeg` en provenance de RPMFusion.
-Ce paquet est une dépendance de KDE sous le capot, et de cette manière on est
-sûr de gérer correctement tous les formats audio et vidéo.
-
-``` 
-# dnf install -y ffmpeg 
-``` 
-
-Partant de là, on peut installer le groupe de paquets pour KDE :
-
-``` 
-# dnf group install "KDE (K Desktop Environment)"
-``` 
-
-Démarrer en mode graphique par défaut :
-
-```
-# systemctl set-default graphical.target
 ```
 
 ## Franciser le système
@@ -529,108 +444,7 @@ Vérifier si tout s'est bien passé :
 ```
 # localectl status
 System Locale: LANG=fr_FR.UTF-8
-    VC Keymap: ch-fr
-   X11 Layout: ch
+    VC Keymap: fr-fr
+   X11 Layout: fr
   X11 Variant: fr
-```
-
-## Configuration initiale de GNOME
-
-Dans les Paramètres de KDE, ouvrir la section **Gestion de l'énergie** et
-désactiver tout ce qui ressemble à de la mise en veille.
-
-Faire une recherche sur `background` et `wallpaper` pour trouver une collection
-de fonds d'écran :
-
-```
-# dnf search background
-# dnf search wallpaper
-```
-
-## Applications Internet
-
-- Mozilla Firefox : `firefox`
-
-- Google Chrome : `google-chrome-stable`
-
-- Mozilla Thunderbird : `thunderbird`
-
-- Filezilla : `filezilla`
-
-- Client BitTorrent : `transmission`
-
-- Client IRC : `hexchat`
-
-- Client VNC : `krdc`
-
-
-## Applications Bureautique
-
-- LibreOffice :
-
-  * `libreoffice`
-
-  * `libreoffice-langpack-fr`
-
-  * `libreoffice-help-fr`
-
-
-## Applications Graphisme
-
-- Digikam : `digikam`
-
-- GIMP : `gimp`
-
-- Inkscape : `inkscape`
-
-- Scribus : `scribus`
-
-- Simple Scan : `simple-scan`
-
-
-## Applications Multimedia
-
-- Audacious : 
-
-  * `audacious`
-
-  * `audacious-plugins-freeworld`
-
-- Audacity : `audacity`
-
-- VLC : `vlc`
-
-- MPlayer : `mplayer`
-
-- DVDCSS : `libdvdcss`
-
-- Openshot : `openshot`
-
-- Kdenlive : `kdenlive`
-
-
-## Applications Utilitaires
-
-- Ark : `ark`
-
-- KeePassXC : `keepassxc`
-
-
-## AnyDesk
-
-Éditer un fichier `/etc/yum.repos.d/anydesk.repo` :
-
-```
-[anydesk]
-name=AnyDesk
-enabled=1
-baseurl=http://rpm.anydesk.com/rhel/$basearch/
-gpgcheck=1
-gpgkey=https://keys.anydesk.com/repos/RPM-GPG-KEY
-```
-
-Installer AnyDesk :
-
-```
-# dnf install -y anydesk
 ```
