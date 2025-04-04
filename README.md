@@ -340,6 +340,7 @@ sudo dnf install -y \
   xdg-desktop-portal \
   xdg-desktop-portal-gnome \
   xdg-desktop-portal-gtk \
+  xdg-user-dirs \
   xdg-user-dirs-gtk
 ```
 
