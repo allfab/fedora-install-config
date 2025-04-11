@@ -480,6 +480,26 @@ System Locale: LANG=fr_FR.UTF-8
   X11 Variant: fr
 ```
 
+## Gérer les répertoires standards utilisateurs
+
+```bash
+vi ~/.config/user-dirs.dirs
+
+# XDG_DESKTOP_DIR="$HOME/Bureau"
+XDG_DOWNLOAD_DIR="$HOME/downloads"
+XDG_DOCUMENTS_DIR="$HOME/documents"
+XDG_MUSIC_DIR="$HOME/music"
+XDG_PICTURES_DIR="$HOME/images"
+XDG_VIDEOS_DIR="$HOME/videos"
+# XDG_TEMPLATES_DIR="$HOME/templates"
+# XDG_PUBLICSHARE_DIR="$HOME/share"
+```
+
+```bash
+xdg-user-dirs-update
+```
+
+
 ## Installation des extensions GNOME
 
 - [`Color Picker`](https://extensions.gnome.org/extension/3396/color-picker/)
