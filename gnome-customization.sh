@@ -22,11 +22,14 @@ gsettings set org.gnome.desktop.interface clock-show-date true
 gsettings set org.gnome.desktop.interface clock-show-seconds true
 gsettings set org.gnome.desktop.interface clock-show-weekday true
 gsettings set org.gnome.desktop.interface clock-format 24h
-#echo " - Localisation du pointeur via CTRL"
-#gsettings set org.gnome.desktop.interface locate-pointer true #BUG de FOCUS avec GIMP
+echo " - Désactivation des espaces de travail dynamique + Activation de 4 espaces de travail fixes"
+gsettings set org.gnome.mutter dynamic-workspaces false
+gsettings set org.gnome.desktop.wm.preferences num-workspaces 4 
+echo " - Localisation du pointeur via CTRL"
+gsettings set org.gnome.desktop.interface locate-pointer true
 echo " - Paramétrage Touch Pad"
 gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing true
-gsettings set org.gnome.desktop.peripherals.touchpad click-method "areas"
+gsettings set org.gnome.desktop.peripherals.touchpad click-method "fingers"
 echo " - Désactivation des sons système"
 gsettings set org.gnome.desktop.wm.preferences audible-bell false
 echo " - Désactivation du mode nuit"
