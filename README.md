@@ -230,6 +230,7 @@ sudo dnf install -y \
   avahi \
   baobab \
   dconf \
+  dconf-editor \
   desktop-backgrounds-gnome \
   evince \
   evince-djvu \
