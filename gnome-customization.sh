@@ -29,8 +29,8 @@ gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing true
 gsettings set org.gnome.desktop.peripherals.touchpad click-method "areas"
 echo " - Désactivation des sons système"
 gsettings set org.gnome.desktop.wm.preferences audible-bell false
-echo " - Activation du mode nuit"
-gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
+echo " - Désactivation du mode nuit"
+gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled false
 echo " - Epuration des fichiers temporaires et de la corbeille de plus de 30 jours"
 gsettings set org.gnome.desktop.privacy remove-old-temp-files true
 gsettings set org.gnome.desktop.privacy remove-old-trash-files true
@@ -76,7 +76,7 @@ gsettings set org.gnome.Epiphany start-in-incognito-mode true
 
 echo "Configuration de Ptyxis"
 gsettings set org.gnome.Ptyxis use-system-font false
-gsettings set org.gnome.Ptyxis font-name 'Monospace 14'
+gsettings set org.gnome.Ptyxis font-name 'Monospace 11'
 gsettings set org.gnome.Ptyxis restore-session false
 
 echo "Application des fonts Red Hat"
