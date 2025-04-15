@@ -483,16 +483,22 @@ System Locale: LANG=fr_FR.UTF-8
 ## Gérer les répertoires standards utilisateurs
 
 ```bash
+rm -Rf /home/allfab/*
+mkdir -pv /home/allfab/{downloads,documents,musics,images,videos,virtualization}
+```
+
+```bash
 vi ~/.config/user-dirs.dirs
 
-# XDG_DESKTOP_DIR="$HOME/Bureau"
 XDG_DOWNLOAD_DIR="$HOME/downloads"
 XDG_DOCUMENTS_DIR="$HOME/documents"
-XDG_MUSIC_DIR="$HOME/music"
+XDG_MUSIC_DIR="$HOME/musics"
 XDG_PICTURES_DIR="$HOME/images"
 XDG_VIDEOS_DIR="$HOME/videos"
-# XDG_TEMPLATES_DIR="$HOME/templates"
-# XDG_PUBLICSHARE_DIR="$HOME/share"
+XDG_VIRTUALIZATION_DIR="$HOME/virtualization"
+XDG_DESKTOP_DIR="$HOME/"
+XDG_TEMPLATES_DIR="$HOME/"
+XDG_PUBLICSHARE_DIR="$HOME/"
 ```
 
 ```bash
