@@ -503,6 +503,7 @@ XDG_PUBLICSHARE_DIR="$HOME/"
 
 ```bash
 xdg-user-dirs-update
+xdg-user-dirs-gtk-update
 ```
 
 
