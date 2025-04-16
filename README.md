@@ -526,6 +526,19 @@ On s'assure que le menu de démarrage de GRUB2 est à jour et qu'il reflète l'�
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
 
+## VSCode
+
+Installation via les dépôts de Microsoft :
+```bash
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
+```
+
+```bash
+dnf check-update
+sudo dnf install code
+```
+
 ## Installation des extensions GNOME
 
 - [`Color Picker`](https://extensions.gnome.org/extension/3396/color-picker/)
