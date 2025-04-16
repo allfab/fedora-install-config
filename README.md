@@ -521,7 +521,7 @@ sudo vi /etc/default/grub
 GRUB_TIMEOUT=0
 ```
 
-On s'assurer que le menu de démarrage de GRUB2 est à jour et qu'il reflète l'état des options configurées ci-avant :
+On s'assure que le menu de démarrage de GRUB2 est à jour et qu'il reflète l'état des options configurées ci-avant :
 ```bash
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
