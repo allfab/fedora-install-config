@@ -526,6 +526,17 @@ On s'assure que le menu de démarrage de GRUB2 est à jour et qu'il reflète l'�
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
 
+Changement du titre de l'entrée par défaut (Index 0) :
+```bash
+sudo grubby --info=ALL
+```
+
+```bash
+sudo grubby --set-title="Fedora Linux 42 Workstation Lite" --index=0
+```
+
+
+
 ## VSCode
 
 Installation via les dépôts de Microsoft :
