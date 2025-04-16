@@ -526,7 +526,6 @@ On s'assurer que le menu de démarrage de GRUB2 est à jour et qu'il reflète l'
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
 
-
 ## Installation des extensions GNOME
 
 - [`Color Picker`](https://extensions.gnome.org/extension/3396/color-picker/)
