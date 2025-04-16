@@ -507,6 +507,18 @@ xdg-user-dirs-update
 xdg-user-dirs-gtk-update
 ```
 
+## Configuration du chargeur d'amorçage GRUB2 (GRand Unified Bootloader) 
+
+On s'assure que le menu de démarrage de GRUB2 est toujours visible, ce qui peut être utile pour accéder à des options de démarrage avancées ou pour sélectionner un autre système d'exploitation si plusieurs sont installés :
+```bash
+sudo grub2-editenv unset menu_auto_hide
+```
+
+On s'assurer que le menu de démarrage de GRUB2 est à jour et qu'il reflète l'état des options configurées ci-avant :
+```bash
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+```
+
 
 ## Installation des extensions GNOME
 
