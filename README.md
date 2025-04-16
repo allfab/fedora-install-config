@@ -539,6 +539,13 @@ dnf check-update
 sudo dnf install code
 ```
 
+## dbeaver
+
+```bash
+wget https://dbeaver.io/files/dbeaver-ce-latest-stable.x86_64.rpm
+sudo dnf install dbeaver-ce-latest-stable.x86_64.rpm
+```
+
 ## Installation des extensions GNOME
 
 - [`Color Picker`](https://extensions.gnome.org/extension/3396/color-picker/)
