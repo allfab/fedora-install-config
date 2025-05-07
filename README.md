@@ -537,7 +537,6 @@ sudo grubby --set-title="Fedora Linux 42 Workstation Lite" --index=0
 ```
 
 
-
 ## VSCode
 
 Installation via les dépôts de Microsoft :
@@ -565,3 +564,4 @@ sudo dnf install dbeaver-ce-latest-stable.x86_64.rpm
 - [`Space Bar`](https://extensions.gnome.org/extension/5090/space-bar/)
 - [`Top Bar Organizer`](https://extensions.gnome.org/extension/4356/top-bar-organizer/)
 - [`Vitals`](https://extensions.gnome.org/extension/1460/vitals/)
+- [`Just Perfection`](https://extensions.gnome.org/extension/3843/just-perfection/)
