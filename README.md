@@ -485,12 +485,13 @@ System Locale: LANG=fr_FR.UTF-8
 
 ```bash
 rm -Rf /home/allfab/*
-mkdir -pv /home/allfab/{downloads,documents,musics,images,videos,virtualization}
+mkdir -pv /home/allfab/{code,downloads,documents,musics,images,videos,virtualization}
 ```
 
 ```bash
 vi ~/.config/user-dirs.dirs
 
+XDG_CODE_DIR="$HOME/code"
 XDG_DOWNLOAD_DIR="$HOME/downloads"
 XDG_DOCUMENTS_DIR="$HOME/documents"
 XDG_MUSIC_DIR="$HOME/musics"
