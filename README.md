@@ -601,3 +601,36 @@ sudo dnf install dbeaver-ce-latest-stable.x86_64.rpm
 - [`Top Bar Organizer`](https://extensions.gnome.org/extension/4356/top-bar-organizer/)
 - [`Vitals`](https://extensions.gnome.org/extension/1460/vitals/)
 - [`Just Perfection`](https://extensions.gnome.org/extension/3843/just-perfection/)
+
+
+## Installation d'outils complémentaires
+
+### Arsenal
+
+Réfs: [https://github.com/Orange-Cyberdefense/arsenal](https://github.com/Orange-Cyberdefense/arsenal)
+
+```bash
+python3 -m ensurepip --upgrade
+sudo pip install pipx
+python3 -m pip install arsenal-cli
+```
+
+```bash
+vi /home/allfab/.bashrc
+export PATH="$HOME/.local/bin:$PATH"
+source ~/.bashrc
+echo $PATH
+```
+
+### Zellij
+
+Réfs: [https://github.com/zellij-org/zellij](https://github.com/zellij-org/zellij)
+
+```bash
+cd /home/allfab/downloads
+wget https://github.com/zellij-org/zellij/releases/download/v0.42.2/zellij-x86_64-unknown-linux-musl.tar.gz
+tar xf zellij-x86_64-unknown-linux-musl.tar.gz
+chmod +x zellij
+sudo mv zellij /usr/local/bin
+rm -f zellij-x86_64-unknown-linux-musl.tar.gz
+```
