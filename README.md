@@ -522,7 +522,28 @@ git config --global credential.helper 'cache --timeout=900'
 git config --global --get credential.helper
 ```
 Ici, le `timeout` est exprimé en secondes. `900` secondes = 15 minutes.
-Test
+
+Notez ici que si vous avez une clé SSH avec une passphrase, il vous faut configurer l'agent SSH pour éviter d'avoir à entrer la passphrase à chaque fois :
+
+Démarrer l'agent SSH et afficher son identifiant de processus :
+```bash
+eval "$(ssh-agent -s)"
+```
+
+Ajouter votre clé SSH à l'agent :
+```bash
+ssh-add ~/.ssh/allfab
+```
+
+Vérifier que votre clé a été ajoutée avec succès :
+```bash
+ssh-add -l
+```
+Recharger votre fichier de configuration :
+```bash
+source ~/.bashrc
+```
+
 
 
 ## Configuration du chargeur d'amorçage GRUB2 (GRand Unified Bootloader) 
