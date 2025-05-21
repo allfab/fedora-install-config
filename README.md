@@ -389,7 +389,7 @@ sudo cp -vf conf/bash/bashrc-user /etc/skel/.bashrc
 Installer le fichier `.vimrc` pour `root` .
 
 ```bash
-sudo cp -vf vim/vimrc /root/.vimrc
+sudo cp -vf conf/vim/vimrc /root/.vimrc
 ```
 
 Installer le fichier `.vimrc` pour l'utilisateur initial (`allfab` dans
