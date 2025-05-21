@@ -6,21 +6,37 @@ if [ -f /etc/bashrc ]; then
 fi
  
 # Alias
+alias grep='grep --color=auto'
+alias ls='ls --color=auto'
+alias l='ls -lh'
+alias ll='ls -alh'
+alias la='ls -Ah'
+alias lla='ls -lah'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-alias ll='ls -al'
+alias vi='vim'
+alias c='clear'
+alias h='history'
+alias a='arsenal'
+alias z='zellij'
+alias dcup='docker compose up -d --remove-orphans'
+alias dcp='docker compose up -d --remove-orphans'
+alias dcdown='docker compose down'
+alias dcd='docker compose down'
 alias ..='cd ..'
 alias ...='cd ../..'
-alias vi='vim'
 
 # PS1
 GREEN='\[\033[0;32m\]'
 WHITE='\[\033[1;37m\]'
 NC='\[\033[0;m\]'
-PS1="$GREEN[$WHITE\u$NC@$WHITE\h$NC:$WHITE\W$GREEN] \$ $NC"
+PS1="$GREEN[$GREEN\u$NC@$GREEN\h$NC:$WHITE\W$GREEN] \$ $NC"
 
 # Vim
 EDITOR=vim
 VISUAL=$EDITOR
 export EDITOR VISUAL
+
+# PYTHON - PIP
+export PATH="$HOME/.local/bin:$PATH"

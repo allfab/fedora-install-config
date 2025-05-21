@@ -10,19 +10,26 @@ LANG=en_US.utf8
 export LANG
 
 # Alias
+alias grep='grep --color=auto'
+alias ls='ls --color=auto'
+alias l='ls -lh'
+alias ll='ls -alh'
+alias la='ls -Ah'
+alias lla='ls -lah'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-alias ll='ls -al'
-alias ..='cd ..'
-alias ...='cd ../..'
 alias vi='vim'
+alias c='clear'
+alias h='history'
+alias a='arsenal'
+alias z='zellij'
 
 # PS1
 RED='\[\033[0;33m\]'
 WHITE='\[\033[1;37m\]'
 NC='\[\033[0m\]'
-PS1="$RED[$WHITE\u$NC@$WHITE\h$NC:$WHITE\W$RED] #$NC "
+PS1="$RED[$RED\u$NC@$RED\h$NC:$WHITE\W$RED] #$NC "
 
 # Vim
 EDITOR=vim
