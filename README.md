@@ -509,6 +509,17 @@ xdg-user-dirs-update
 xdg-user-dirs-gtk-update
 ```
 
+## Installation de GIT et configuration de la rétention des identifiants
+```bash
+sudo dnf install -y git
+```
+Editer le fichier `config` du répertoire `.git` du dépôt cloné et ajouter la section :
+```bash
+[credential]
+    helper = cache --timeout 900
+```
+Ici, le `timeout` est exprimé en secondes. `900` secondes = 15 minutes.
+
 ## Configuration du chargeur d'amorçage GRUB2 (GRand Unified Bootloader) 
 
 On s'assure que le menu de démarrage de GRUB2 est toujours visible, ce qui peut être utile pour accéder à des options de démarrage avancées ou pour sélectionner un autre système d'exploitation si plusieurs sont installés :
