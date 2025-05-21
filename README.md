@@ -510,6 +510,9 @@ xdg-user-dirs-gtk-update
 ```
 
 ## Installation de GIT et configuration de la rétention des identifiants
+
+Réfs : [https://git-scm.com/docs/git-credential-cache](https://git-scm.com/docs/git-credential-cache)
+
 ```bash
 sudo dnf install -y git
 ```
