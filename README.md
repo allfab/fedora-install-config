@@ -522,6 +522,7 @@ git config --global credential.helper 'cache --timeout=900'
 git config --global --get credential.helper
 ```
 Ici, le `timeout` est exprimé en secondes. `900` secondes = 15 minutes.
+Test
 
 
 ## Configuration du chargeur d'amorçage GRUB2 (GRand Unified Bootloader) 
