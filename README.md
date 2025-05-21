@@ -516,12 +516,13 @@ Réfs : [https://git-scm.com/docs/git-credential-cache](https://git-scm.com/docs
 ```bash
 sudo dnf install -y git
 ```
-Editer le fichier `config` du répertoire `.git` du dépôt cloné et ajouter la section :
+
 ```bash
-[credential]
-    helper = cache --timeout 900
+git config --global credential.helper 'cache --timeout=900'
+git config --global --get credential.helper
 ```
 Ici, le `timeout` est exprimé en secondes. `900` secondes = 15 minutes.
+
 
 ## Configuration du chargeur d'amorçage GRUB2 (GRand Unified Bootloader) 
 
