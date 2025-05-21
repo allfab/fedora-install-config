@@ -486,6 +486,7 @@ System Locale: LANG=fr_FR.UTF-8
 ```bash
 rm -Rf /home/allfab/*
 mkdir -pv /home/allfab/{code,downloads,documents,musics,images,videos,virtualization}
+mkdir -pv /home/allfab/code/{github,forgejo}
 ```
 
 ```bash
