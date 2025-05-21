@@ -544,8 +544,6 @@ Recharger votre fichier de configuration :
 source ~/.bashrc
 ```
 
-
-
 ## Configuration du chargeur d'amorçage GRUB2 (GRand Unified Bootloader) 
 
 On s'assure que le menu de démarrage de GRUB2 est toujours visible, ce qui peut être utile pour accéder à des options de démarrage avancées ou pour sélectionner un autre système d'exploitation si plusieurs sont installés :
