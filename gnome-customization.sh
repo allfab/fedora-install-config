@@ -81,6 +81,7 @@ echo "Configuration de Ptyxis"
 gsettings set org.gnome.Ptyxis use-system-font false
 gsettings set org.gnome.Ptyxis font-name 'Monospace 11'
 gsettings set org.gnome.Ptyxis restore-session false
+gsettings set org.gnome.Ptyxis.Profile:/org/gnome/Ptyxis/Profiles/$PTYXIS_PROFILE/ opacity .85
 
 echo "Application des fonts Red Hat"
 if rpm -q redhat-mono-fonts &> /dev/null
